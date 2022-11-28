@@ -26,7 +26,7 @@ pipeline {
             steps {
               
            echo 'Build ...'
-             sh 'npm start'
+             sh 'node app/index.js'
             }
         }
     }
