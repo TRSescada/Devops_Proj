@@ -22,18 +22,11 @@ pipeline {
               sh 'npm install'
             }
         }
-             stage('TEST') {
-            steps {
-              
-           echo 'TEsTING ...'
-             sh 'npm run test'
-            }
-        }
                    stage('BUILD') {
             steps {
               
            echo 'Build ...'
-             sh 'npm run build'
+             sh 'npm start'
             }
         }
     }
