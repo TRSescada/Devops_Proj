@@ -22,7 +22,13 @@ pipeline {
               sh 'npm install'
             }
         }
-                   stage('BUILD') {
+        stage('test') {
+            steps {
+               sh 'pwd'
+              sh 'npm test'
+            }
+        }
+           stage('BUILD') {
             steps {
               
            echo 'Build ...'
