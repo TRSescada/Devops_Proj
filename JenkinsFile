@@ -13,7 +13,7 @@ pipeline {
          stage('Git checkout') {
             steps {
                
-             git branch: 'master',url:'https://github.com/mahabaraket/black-dashboard-angular.git'
+             git branch: 'main',url:'https://github.com/TRSescada/Devops_Proj.git'
             }
         }
            stage('Packages Installations') {
