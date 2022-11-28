@@ -1,41 +1,45 @@
 pipeline {
     agent any
-
+     tools {
+         nodejs 'Nodejs'
+     
+      }
     stages {
-        stage('SCM PROJECT') {
+        stage ('Check Tools Initializing') {
             steps {
-                echo 'Getting PROJECT FROM SCM'
-                sleep(3)
+                sh' npm install -g @angular/cli'
+                sh 'ng --version'
+                sh 'node --version'
+                sh 'npm -v'
+               sh'docker --version'
+                sh ''' echo "Nodejs = ${Nodejs}"
+                '''
             }
         }
-        stage('BUILD') {
+         stage('Git checkout') {
             steps {
-                echo 'BUILD OF Project IN PROGRESS'
-                sleep(3)
+               
+             git branch: 'master',url:'https://github.com/mahabaraket/black-dashboard-angular.git'
             }
         }
-        stage('UNIT TEST') {
+           stage('Packages Installations') {
             steps {
-                echo 'TEST PHASE IN PROGRESS'
-                sleep(3)
+               sh 'pwd'
+              sh 'npm install'
             }
         }
-        stage('PACKAGE & DEPLOY') {
+             stage('TEST') {
             steps {
-                echo 'PACKAGING and DEPLOYMENT IN PROGRESS'
-                sleep(3)
+              
+           echo 'TEsTING ...'
+             sh 'npm run test'
             }
         }
-        stage('UI TEST') {
+                   stage('BUILD') {
             steps {
-                echo 'POST DEPLOYMENT TEST PHASE IN PROGRESS'
-                sleep(3)
-            }
-        }
-        stage('ARCHIVE') {
-            steps {
-                echo 'ARCHIVING PHASE IN PROGRESS'
-                sleep(3)
+              
+           echo 'Build ...'
+             sh 'npm run build'
             }
         }
     }
