@@ -5,6 +5,11 @@ pipeline {
      
       }
     stages {
+        stage('Permissions') {
+            steps {
+                sh 'chmod 775 *'
+            }
+        }
         stage ('Check Tools Initializing') {
             steps {
                 sh' npm install express'
